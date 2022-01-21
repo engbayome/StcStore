@@ -1,0 +1,65 @@
+<div class="container">
+    <form #AddProduct="ngForm" (ngSubmit)="AddProduct.valid && onSubmit()">
+        <div class="row">
+
+
+            <div class="form-group col-md-6">
+                <label>Title</label>
+                <input class="form-control" type="text" name="title" [(ngModel)]="model['title']" ngModel
+                    #title="ngModel" required [ngClass]="{'is-invalid':AddProduct.submitted && title.invalid}">
+                <div *ngIf="AddProduct.submitted && title.invalid " class="invalid-feedback">
+                    <div *ngIf="title.errors?.['required']">Title is required </div>
+                </div>
+            </div>
+
+
+
+            <div class="form-group col-md-6">
+                <label>Price</label>
+                <input class="form-control" type="number" name="price" [(ngModel)]="model['price']" ngModel
+                    #price="ngModel" required [ngClass]="{'is-invalid':AddProduct.submitted && price.invalid}">
+                <div *ngIf="AddProduct.submitted && price.invalid" class="invalid-feedback">
+                    <div *ngIf="price.errors?.['required']">Price is required </div>
+                </div>
+            </div>
+
+
+
+
+            <div class="form-group col-md-6">
+                <label>Category</label>
+                <input class="form-control" type="text" name="category" [(ngModel)]="model['category']" ngModel
+                    #category="ngModel" required [ngClass]="{'is-invalid':AddProduct.submitted && category.invalid}">
+                <div *ngIf="AddProduct.submitted && category.invalid " class="invalid-feedback">
+                    <div *ngIf="category.errors?.['required']">Category is required </div>
+                </div>
+            </div>
+
+
+            <div class="form-group col-md-6">
+                <label>Image</label>
+                <input class="form-control" type="text" name="image" [(ngModel)]="model['image']" ngModel
+                    #image="ngModel" required [ngClass]="{'is-invalid':AddProduct.submitted && image.invalid}">
+                <div *ngIf="AddProduct.submitted && image.invalid " class="invalid-feedback">
+                    <div *ngIf="image.errors?.['required']">Image is required </div>
+                </div>
+            </div>
+
+
+
+
+            <div class="form-group col-md-12">
+                <label>Description</label>
+                <textarea class="form-control" rows="3" name="description" ngModel #description="ngModel"
+                    [(ngModel)]="model['description']" autocomplete="off"></textarea>
+            </div>
+
+
+            <div class="col-12 text-center m-3">
+                <button class="btn btn-primary m-3" type="submit">
+                    <span class="spinner-border spinner-border-sm" role="status" *ngIf="saving"></span>
+                    Submit</button>
+            </div>
+        </div>
+    </form>
+</div>
